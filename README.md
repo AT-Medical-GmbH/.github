@@ -1,67 +1,92 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/AT-Medical/ATMED-assets/main/assets/logos/svg/logo.svg" width="320" alt="AT Medical Logo">
+  <img src="https://raw.githubusercontent.com/AT-Medical-GmbH/ATMED-assets/main/assets/logos/svg/logo.svg" width="320" alt="AT Medical Logo">
 </p>
 
-<h1 align="center">AT Medical – GitHub Organization Infrastructure</h1>
+<h1 align="center">AT Medical – GitHub Organization Dashboard</h1>
 
 <p align="center">
-  <img src="https://github.com/AT-Medical/.github/actions/workflows/ci.yml/badge.svg" alt="Build">
-  <img src="https://img.shields.io/github/last-commit/AT-Medical/.github" alt="Last Commit">
-  <img src="https://img.shields.io/github/issues/AT-Medical/.github" alt="Open Issues">
-  <img src="https://img.shields.io/github/issues-pr/AT-Medical/.github" alt="Open Pull Requests">
-  <img src="https://img.shields.io/github/repo-size/AT-Medical/.github" alt="Repository Size">
-  <img src="https://img.shields.io/github/license/AT-Medical/.github" alt="License">
-  <img src="https://img.shields.io/github/stars/AT-Medical/.github?style=flat" alt="Stars">
-  <img src="https://img.shields.io/github/forks/AT-Medical/.github?style=flat" alt="Forks">
+  <img src="https://img.shields.io/badge/class-governance-6f42c1" alt="Class Governance">
+  <img src="https://img.shields.io/badge/lifecycle-active-1f883d" alt="Lifecycle Active">
+  <img src="https://img.shields.io/badge/service-github-0969da" alt="Service GitHub">
   <img src="https://img.shields.io/badge/visibility-public-1f883d" alt="Visibility Public">
-  <img src="https://img.shields.io/badge/scope-organization-6f42c1" alt="Scope Organization">
-  <img src="https://img.shields.io/badge/type-governance-0075ca" alt="Type Governance">
-  <img src="https://img.shields.io/badge/org--standard-true-brightgreen" alt="Org Standard">
-  <img src="https://img.shields.io/badge/status-verified-brightgreen" alt="Status Verified">
-  <img src="https://img.shields.io/badge/team-devops--team-blueviolet" alt="Team DevOps">
+  <img src="https://img.shields.io/badge/rollout-report--only-f2cc60" alt="Rollout report only">
 </p>
 
-## 🇩🇪 Beschreibung
+## Repository Dashboard
 
-Dieses Repository enthält die organisationsweiten GitHub-Standards der **AT Medical GmbH®**.  
-Es dient als zentrale Basis für gemeinsame Richtlinien, Vorlagen und wiederverwendbare Konfigurationen innerhalb der gesamten Entwicklungsumgebung.
+| Field | Value |
+|---|---|
+| Repository | `.github` |
+| Class | `governance` |
+| Lifecycle | `active` |
+| Service | `github` |
+| Owner team | `devops-team` |
+| Technical owner | `governance-team` |
+| Visibility | `public` |
+| Data class | `public` |
+| Deployable | `false` |
+| Governance baseline | `AT-Medical-GmbH/github-governance` |
+| Central rollout issue | `AT-Medical-GmbH/github-governance#26` |
+| Local rollout issue | `AT-Medical-GmbH/.github#92` |
 
-Typische Inhalte dieses Repositorys sind insbesondere:
+## 🇩🇪 Zweck
 
-- globale GitHub-Konfigurationen
-- Issue- und Pull-Request-Templates
-- Sicherheits- und Community-Dateien
-- wiederverwendbare Workflows
-- organisatorische Standards für Governance und Qualitätssicherung
+Dieses Repository ist die öffentliche, organisationsweite GitHub-Basis der **AT Medical GmbH®**. Es dient als sicherer Einstiegspunkt für Profilinhalte, öffentliche Vorlagen und konsistente Repository-Konventionen.
 
-Dieses Repository ist damit nicht als Fach- oder Produktrepository gedacht, sondern als zentrale Steuerungs- und Standardisierungsebene für die gesamte GitHub-Organisation.
+Es ist bewusst **kein Produkt- oder Servicerepository**. Produktive Dienste wie WordPress, Authentik, Traefik oder AI-Komponenten werden in eigenen Service-Repositories geführt.
 
-## 🇬🇧 Description
+## 🇬🇧 Purpose
 
-This repository contains the organization-wide GitHub standards of **AT Medical GmbH®**.  
-It serves as the central foundation for shared policies, templates and reusable configurations across the entire development environment.
+This repository is the public organization-wide GitHub base for **AT Medical GmbH®**. It provides safe profile content, public templates and consistent repository conventions.
 
-Typical contents of this repository include:
+It is intentionally **not a product or service repository**. Productive services such as WordPress, Authentik, Traefik or AI components are maintained in their own service repositories.
 
-- global GitHub configurations
-- issue and pull request templates
-- security and community files
-- reusable workflows
-- organizational standards for governance and quality assurance
+## Shortlinks
 
-This repository is therefore not intended as a product or domain repository, but as the central control and standardization layer for the entire GitHub organization.
+| Target | Link |
+|---|---|
+| Organization profile | [`profile/README.md`](profile/README.md) |
+| Governance standard | [`AT-Medical-GmbH/github-governance`](https://github.com/AT-Medical-GmbH/github-governance) |
+| Pilot rollout issue | [`#92`](https://github.com/AT-Medical-GmbH/.github/issues/92) |
+| Central rollout issue | [`github-governance#26`](https://github.com/AT-Medical-GmbH/github-governance/issues/26) |
+| Public website | [`www.at-medical.de`](https://www.at-medical.de) |
+
+## Quality Gates
+
+| Gate | Status |
+|---|---|
+| Repository metadata | `introduced` |
+| README dashboard | `aligned` |
+| Public-safe shortlinks | `required` |
+| Central governance reference | `aligned` |
+| Service deployment | `not applicable` |
+| Reporting rollout | `report-only` |
+
+## Repository Contract
+
+### Belongs here
+
+- organization profile content
+- public-safe templates
+- public-safe repository guidance
+- shared issue and pull request conventions
+- community and repository-default files
+
+### Does not belong here
+
+- service-specific application code
+- internal-only operational links
+- runtime data
+- customer data
+- deployment-only service configuration
+
+## Governance Notes
+
+The authoritative governance baseline is maintained in `AT-Medical-GmbH/github-governance`.
+
+This repository participates in the pilot rollout in **report-only mode**. Blocking checks should only be introduced after the pilot repositories are aligned and the central governance issue is updated.
 
 ---
-
-> **Version:** 0.9.0 | **Date:** 2026-03-16 | **Status:** verified | **Repository:** .github
-
-<hr>
-
-<blockquote style="border-left: 3px solid #ccc; padding-left: 12px; color: #666;">
-<sub>
-Version: 0.9.0 &nbsp;|&nbsp; Date: 2026-03-16 &nbsp;|&nbsp; Status: verified &nbsp;|&nbsp; Repository: .github
-</sub>
-</blockquote>
 
 <p align="center">
 <sub>
@@ -74,8 +99,7 @@ Alle Rechte vorbehalten | All Rights reserved
 <a href="https://www.at-medical.de/legal/widerruf">Widerruf</a> |
 <a href="https://www.at-medical.de/it-security">Sicherheit</a> |
 <a href="https://www.at-medical.de/legal/barrierefreiheit">Barrierefreiheit</a> |
-<a href="https://www.at-medical.de/code-of-conduct">Code of Conduct</a> |
-<a href="https://www.at-medical.de/legal/lieferkettenschutzgesetz">Lieferkettenschutzgesetz</a>
+<a href="https://www.at-medical.de/code-of-conduct">Code of Conduct</a>
 <br><br>
 Bei Fragen kontaktieren Sie uns über unser
 <a href="https://www.at-medical.de/kontakt">Kontaktformular</a>
