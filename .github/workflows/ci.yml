@@ -1,4 +1,4 @@
-name: CI
+name: ATMED Required CI
 
 on:
   push:
@@ -6,19 +6,26 @@ on:
       - main
       - develop
       - staging
+      - pilot-rollout
 
   pull_request:
     branches:
       - main
       - develop
       - staging
+      - pilot-rollout
+
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  ci:
-    uses: ./.github/workflows/reusable-ci.yml
+  central-ci:
+    name: Central reusable CI
+    permissions:
+      contents: read
+    uses: AT-Medical-GmbH/.github/.github/workflows/reusable-ci.yml@main
     with:
       run_lint: true
       run_tests: true
