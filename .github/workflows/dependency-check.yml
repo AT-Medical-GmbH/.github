@@ -23,40 +23,42 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Dependency Review
-        uses: actions/dependency-review-action@v4
+        uses: actions/dependency-review-action@2031cfc080254a8a887f58cffee85186f0e49e48 # v4 major ref resolved 2026-07-10
         with:
           fail-on-severity: high
           deny-licenses: GPL-2.0, GPL-3.0, LGPL-2.0, LGPL-2.1, AGPL-3.0
 
   action-versions:
-    name: Check Action Version Pinning
+    name: Check Action SHA Pinning
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
-      - name: Check for unpinned actions
+      - name: Reject mutable external Action references
         shell: bash
         run: |
-          set -e
-          unpinned=0
-
-          # Look for actions that use branch references instead of pinned tags
-          while IFS= read -r -d '' wf; do
-            if grep -E "uses: [^@]+@(main|master|develop|latest)" "$wf" > /dev/null 2>&1; then
-              echo "WARNING: $wf uses unpinned action version (branch reference)."
-              grep -n -E "uses: [^@]+@(main|master|develop|latest)" "$wf"
-              unpinned=$((unpinned + 1))
-            fi
-          done < <(find .github/workflows -maxdepth 1 -name "*.yml" -print0 2>/dev/null)
-
-          if [ "$unpinned" -gt 0 ]; then
-            echo "$unpinned workflow(s) use unpinned action versions."
-            echo "Consider pinning actions to a specific version tag."
-          else
-            echo "No unpinned action references found."
+          set -euo pipefail
+          failed=0
+          while IFS= read -r -d '' file; do
+            while IFS= read -r line; do
+              ref="${line##*@}"
+              ref="${ref%%[[:space:]#]*}"
+              if [[ ! "$ref" =~ ^[0-9a-f]{40}$ ]] && [[ "$line" != *"uses: ./"* ]]; then
+                echo "ERROR: mutable action reference in $file: $line"
+                failed=1
+              fi
+            done < <(grep -E '^[[:space:]]*-?[[:space:]]*uses:[[:space:]]+[^[:space:]]+@' "$file" || true)
+          done < <(find .github/workflows .github/actions -type f \( -name '*.yml' -o -name '*.yaml' \) -print0 2>/dev/null)
+          if (( failed != 0 )); then
+            exit 1
           fi
+          echo "All executable external Action references use full commit SHAs."
