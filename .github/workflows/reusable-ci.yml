@@ -25,7 +25,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Check for package.json
         id: package_check
@@ -52,7 +54,7 @@ jobs:
 
       - name: Setup Node.js
         if: steps.package_check.outputs.has_package == 'true'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@1e60f620b9541d6e3841ba155bb4af54c2b024be # v4.0.3
         with:
           node-version: ${{ inputs.node_version }}
           cache: ${{ steps.lock_check.outputs.has_lock == 'true' && 'npm' || '' }}
