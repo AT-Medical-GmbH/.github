@@ -25,7 +25,7 @@ jobs:
     name: Central reusable CI
     permissions:
       contents: read
-    uses: AT-Medical-GmbH/.github/.github/workflows/reusable-ci.yml@main
+    uses: ./.github/workflows/reusable-ci.yml
     with:
       run_lint: true
       run_tests: true

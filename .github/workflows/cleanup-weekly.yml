@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Mark stale PRs and issues
-        uses: actions/stale@v10
+        uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v9.1.0
         with:
           stale-pr-message: >
             This pull request has been automatically marked as stale because it has not had
@@ -30,7 +30,6 @@ jobs:
           days-before-pr-close: 14
           stale-pr-label: "stale"
           exempt-pr-labels: "pinned,security,in-progress"
-          # Do not mark issues stale – only PRs
           days-before-issue-stale: -1
           days-before-issue-close: -1
 
@@ -40,7 +39,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Report artifact directory sizes
         shell: bash

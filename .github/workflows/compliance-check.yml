@@ -12,7 +12,6 @@ on:
       - develop
       - staging
   schedule:
-    # Run weekly on Mondays at 06:00 UTC
     - cron: "0 6 * * 1"
 
 permissions:
@@ -25,7 +24,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Check LICENSE file exists
         shell: bash
@@ -55,14 +56,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Verify required governance files
         shell: bash
         run: |
           set -e
           missing=0
-
           for f in README.md SECURITY.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE; do
             if [ -f "$f" ]; then
               echo "FOUND: $f"
@@ -71,7 +73,6 @@ jobs:
               missing=$((missing + 1))
             fi
           done
-
           if [ "$missing" -gt 0 ]; then
             echo "$missing required governance file(s) are missing."
             exit 1
@@ -93,16 +94,17 @@ jobs:
     name: Dependency License Review
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
-
     permissions:
       contents: read
       pull-requests: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Dependency Review (license and vulnerability)
-        uses: actions/dependency-review-action@v4
+        uses: actions/dependency-review-action@2031cfc080254a8a887f58cffee85186f0e49e48 # v4 major ref resolved 2026-07-10
         with:
           fail-on-severity: high
